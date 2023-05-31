@@ -10,7 +10,7 @@ import win32api, win32con
 def click(x, y):
     win32api.SetCursorPos((x, y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
-    time.sleep(0.05)
+    time.sleep(0.1)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
 
 def main(coords, rgb):
@@ -18,7 +18,7 @@ def main(coords, rgb):
     print(f'{coord_list=}')
     while keyboard.is_pressed('q') == False:
         for coord in coord_list:
-            if pixel(*coord)[2] in range(50, 71):
+            if pixel(*coord)[2] in range(50, 80):
                 click(*coord)
 
 
@@ -35,6 +35,6 @@ if __name__ == "__main__":
                 rgb = ''.join(rgb)
                 rgb = eval(rgb)                                 # make pythonic
             else:
-                coords[line_number] = eval(line)                 # read coords
+                coords[line_number] = eval(line)                # read coords
 
     main(coords, rgb)
